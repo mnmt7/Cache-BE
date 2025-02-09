@@ -2,6 +2,7 @@ const express = require("express");
 
 const cacheRoutes = require("./routes/cacheRoutes");
 const globalErrorHandler = require("./controllers/errorController");
+const AppError = require("./utils/appError");
 
 const app = express();
 
