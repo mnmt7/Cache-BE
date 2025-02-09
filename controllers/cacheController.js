@@ -23,13 +23,18 @@ exports.store = catchAsync(async (req, res) => {
     }
   }
 
-  const result = await Cache.findOneAndUpdate(
+  const cacheItem = await Cache.findOneAndUpdate(
     { key },
     { key, value },
     { upsert: true, new: true }
   );
 
-  res.status(201).json(result);
+  res.status(200).json({
+    status: "success",
+    data: {
+      cache: cacheItem,
+    },
+  });
 });
 
 exports.get = catchAsync(async (req, res) => {
